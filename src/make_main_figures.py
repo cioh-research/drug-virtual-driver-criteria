@@ -20,13 +20,13 @@ plt.rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "
                      "axes.titleweight": "bold", "mathtext.fontset": "stix"})
 STATES = ["AL", "DR", "AC", "OP", "CB"]
 LAB = {"AL": "Alert", "DR": "Drowsy", "AC": "Alcohol", "OP": "Opioid", "CB": "Cannabis"}
-COL = {"AL": "#0072B2", "DR": "#E69F00", "AC": "#009E73", "OP": "#D55E00", "CB": "#CC79A7"}
+COL = {"AL": "#6b7b8c", "DR": "#d1a054", "AC": "#6f9a6a", "OP": "#b0573d", "CB": "#8a6a96"}
 INK = "#1f1f1f"
 FEATS = P["features"]
 FN = {"P": "Eye closure (%)", "BD": "Blink duration", "SL": "Saccade latency", "PV": "Saccade peak velocity",
       "G": "Pursuit gain", "FD": "Fixation duration", "D": "Pupil diameter", "A": "PLR amplitude", "V": "PLR velocity"}
 SYM = {"P": "$P$", "BD": "$B_d$", "SL": "$L_s$", "PV": "$V_p$", "G": "$G_p$", "FD": "$F_d$", "D": "$D_p$", "A": "$A_c$", "V": "$V_c$"}
-seq = LinearSegmentedColormap.from_list("seq", ["#f4f8fb", "#9ecae1", "#2b6ca3", "#08306b"])
+seq = LinearSegmentedColormap.from_list("navy", ["#ffffff", "#c9d6e3", "#7f9cb8", "#3d5f82", "#14283f"])
 W = 6.3
 
 
@@ -54,7 +54,7 @@ for j, s in enumerate(STATES[1:]):
             T[i][j] = "mixed (n.s.)" if c["dir_sign"] == 0 else ("↑ dir. only" if c["dir_sign"] > 0 else "↓ dir. only")
         else:
             T[i][j] = "no data"
-cmap = LinearSegmentedColormap.from_list("div", ["#2166ac", "#67a9cf", "#d1e5f0", "#f2f2f2", "#fbe3d6", "#ef8a62", "#b2182b"])
+cmap = plt.get_cmap("RdBu_r")
 ax.imshow(M, cmap=cmap, vmin=-1, vmax=1, aspect="auto")
 for i in range(len(FEATS)):
     for j in range(4):
@@ -90,7 +90,7 @@ save(fig, "f_separability.png")
 fig = plt.figure(figsize=(W, 3.3))
 gs = fig.add_gridspec(1, 2, width_ratios=[1, 1.25], wspace=0.32, left=0.09, right=0.99, top=0.90, bottom=0.30)
 ax = fig.add_subplot(gs[0, 0]); ns = [int(k) for k in R["n_curve"]]
-for m, mk, c, lab in (("HMID", "s", "#2b6ca3", "HMID"), ("Random Forest", "^", "#08306b", "RF")):
+for m, mk, c, lab in (("HMID", "s", "#7a7a7a", "HMID"), ("Random Forest", "^", "#000000", "RF")):
     ax.plot(ns, [R["n_curve"][str(n)][m]["f1"][0] for n in ns], marker=mk, ms=4, color=c, lw=1.6, label=lab + " F1")
     ax.plot(ns, [R["n_curve"][str(n)][m]["alert_fpr"][0] for n in ns], marker=mk, ms=4, color=c, lw=1.1, ls="--", label=lab + " FAR")
 ax.set_xscale("log"); ax.set_xticks(ns); ax.set_xticklabels(ns); ax.set_xlabel("Averaged 1-min epochs"); ax.set_ylim(0, 1.02)
@@ -108,7 +108,7 @@ fl = ref["f1"] - np.array([[G[f"{f}|{r}"]["RF"]["f1"] for r in RES] for f in FPS
 ol = ref["rec_OP"] - np.array([[G[f"{f}|{r}"]["RF"]["rec_OP"] for r in RES] for f in FPS])
 ok = (fl <= 0.03) & (ol <= 0.03)
 fig = plt.figure(figsize=(W, 6.1))
-gs = fig.add_gridspec(2, 2, height_ratios=[1, 1.05], hspace=0.45, wspace=0.30, left=0.10, right=0.98, top=0.95, bottom=0.08)
+gs = fig.add_gridspec(2, 2, height_ratios=[1, 1.05], hspace=0.45, wspace=0.30, left=0.10, right=0.86, top=0.95, bottom=0.08)
 for k, (M, ttl) in enumerate(((fl, "(a) Macro-F1 loss"), (ol, "(b) Opioid-recall loss"))):
     ax = fig.add_subplot(gs[0, k]); ax.imshow(M, cmap=seq.reversed(), aspect="auto", origin="lower", vmin=0, vmax=0.08)
     for a in range(len(FPS)):
@@ -116,15 +116,17 @@ for k, (M, ttl) in enumerate(((fl, "(a) Macro-F1 loss"), (ol, "(b) Opioid-recall
             v = M[a, b]
             ax.text(b, a, f"{v:.3f}", ha="center", va="center", fontsize=MIN, fontweight="bold" if v <= 0.03 else "normal", color="white" if v < 0.03 else INK)
             if ok[a, b]:
-                ax.add_patch(plt.Rectangle((b - 0.5, a - 0.5), 1, 1, fill=False, ec="#D55E00", lw=1.5))
+                ax.add_patch(plt.Rectangle((b - 0.5, a - 0.5), 1, 1, fill=False, ec="black", lw=2.0))
     ax.set_xticks(range(len(RES))); ax.set_xticklabels([f"{r:.2f}" for r in RES]); ax.set_yticks(range(len(FPS))); ax.set_yticklabels(FPS)
     ax.set_xlabel("Pupil resolution (mm)"); ax.set_ylabel("Frame rate (fps)"); ax.set_title(ttl); clean(ax)
 ax = fig.add_subplot(gs[1, :]); fov = np.linspace(30, 130, 200)
-for rr, ls in ((0.30, ":"), (0.20, "-"), (0.15, "--"), (0.10, "-.")):
-    ax.plot(fov, 0.5 * 2 * 0.65 * np.tan(np.radians(fov) / 2) * 1000 / rr, ls, color="#08306b", lw=1.5, label=f"r = {rr:.2f} mm")
-for name, Hs, c in (("1.0 MP (1280 px)", 1280, "#6b6b6b"), ("1.5 MP (1124 px)", 1124, "#9a9a9a"), ("5 MP (2560–2592 px)", 2592, "#D55E00")):
-    ax.axhline(Hs, color=c, lw=1.0, ls=(0, (4, 2))); ax.text(127, Hs * (1.07 if Hs == 1280 else 0.88), name, fontsize=MIN + 0.5, ha="right", va="center", color=c)
+for rr, ls, cv in ((0.30, ":", 0.45), (0.20, "-", 0.62), (0.15, "--", 0.80), (0.10, "-.", 1.0)):
+    yv = 0.5 * 2 * 0.65 * np.tan(np.radians(fov) / 2) * 1000 / rr
+    ax.plot(fov, yv, ls=ls, color=seq(cv), lw=2.0)
+    ax.text(131, yv[-1], f"r = {rr:.2f} mm", fontsize=MIN + 0.5, va="center", ha="left", color=seq(cv), clip_on=False)
+for name, Hs, c in (("1.0 MP (1280 px)", 1280, "#8a8a8a"), ("1.5 MP (1124 px)", 1124, "#8a8a8a"), ("5 MP (2560–2592 px)", 2592, "#b0573d")):
+    ax.axhline(Hs, color=c, lw=1.0, ls=(0, (2, 2))); ax.text(127, Hs * (1.07 if Hs == 1280 else 0.88), name, fontsize=MIN + 0.5, ha="right", va="center", color=c)
 ax.set_yscale("log"); ax.set_ylim(500, 15000); ax.set_xlim(30, 130); ax.set_xlabel("Horizontal field of view (deg)"); ax.set_ylabel("Required horizontal pixels")
-ax.set_title("(c) Pixel budget (d = 0.65 m, κ = 0.5)"); ax.legend(frameon=False, loc="upper left", ncol=2)
+ax.set_title("(c) Pixel budget (d = 0.65 m, κ = 0.5)")
 save(fig, "f_requirement.png")
 print("main figures ok")

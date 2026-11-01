@@ -15,7 +15,7 @@ plt.rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "
                      "savefig.dpi": 200, "axes.titleweight": "bold"})
 ST = ["AL", "DR", "AC", "OP", "CB"]
 NAME = {"AL": "Alert", "DR": "Drowsy", "AC": "Alcohol", "OP": "Opioid", "CB": "Cannabis"}
-CAT = {"abs": ("Absolute values", "#2b6ca3"), "base": ("Only with a baseline", "#9ecae1"), "none": ("Not established", "#e7e7e7")}
+CAT = {"abs": ("Absolute values", "#3c3c3c"), "base": ("Only with a baseline", "#bdbdbd"), "none": ("Not established", "#ffffff")}
 
 
 def verdict(pr):
@@ -35,7 +35,7 @@ for i in range(5):
         if i == j:
             ax.add_patch(Rectangle((j, 4 - i), 1, 1, fc="white", ec="#cccccc")); continue
         v, a, b = verdict(key(i, j))
-        ax.add_patch(Rectangle((j, 4 - i), 1, 1, fc=CAT[v][1], ec="white", lw=2))
+        ax.add_patch(Rectangle((j, 4 - i), 1, 1, fc=CAT[v][1], ec="#777777", lw=0.8))
         txt = f"{a:.3f}" if i > j else f"{b:.3f}"
         ax.text(j + 0.5, 4 - i + 0.5, txt, ha="center", va="center", fontsize=9.5, color="white" if v == "abs" else "#1f1f1f")
 ax.set_xlim(0, 5); ax.set_ylim(0, 5); ax.set_aspect("equal")
@@ -54,8 +54,8 @@ rows = [("Random forest, no baseline", m["Random Forest"]["f1"][0], m["Random Fo
         ("Random forest, with baseline", o["Random Forest"]["f1"][0], o["Random Forest"]["alert_fpr"][0]),
         ("HMID rules, with baseline", o["HMID"]["f1"][0], o["HMID"]["alert_fpr"][0])]
 y = np.arange(len(rows))[::-1]
-bx.barh(y + 0.18, [r[1] for r in rows], 0.34, color="#2b6ca3", label="Five-state macro-F1")
-bx.barh(y - 0.18, [r[2] for r in rows], 0.34, color="#D55E00", label="Alert false-alarm rate")
+bx.barh(y + 0.18, [r[1] for r in rows], 0.34, color="#3c3c3c", edgecolor="black", lw=0.5, label="Five-state macro-F1")
+bx.barh(y - 0.18, [r[2] for r in rows], 0.34, color="#ffffff", edgecolor="black", lw=0.8, label="Alert false-alarm rate")
 for yy, r in zip(y, rows):
     bx.text(r[1] + 0.01, yy + 0.18, f"{r[1]:.3f}", va="center", fontsize=9)
     bx.text(r[2] + 0.01, yy - 0.18, f"{100 * r[2]:.1f}%", va="center", fontsize=9)

@@ -18,12 +18,14 @@ plt.rcParams.update({"font.family": "serif", "font.serif": ["Times New Roman", "
                      "axes.titlesize": 10.5, "mathtext.fontset": "stix"})
 STATES = ["AL", "DR", "AC", "OP", "CB"]
 LAB = {"AL": "Alert", "DR": "Drowsy", "AC": "Alcohol", "OP": "Opioid", "CB": "Cannabis (THC)"}
-COL = {"AL": "#0072B2", "DR": "#E69F00", "AC": "#009E73", "OP": "#D55E00", "CB": "#CC79A7"}
+COL = {"AL": "#6b7b8c", "DR": "#d1a054", "AC": "#6f9a6a", "OP": "#b0573d", "CB": "#8a6a96"}
+LC = COL
+LS = {"AL": "-", "DR": "--", "AC": "-", "OP": ":", "CB": "-."}
 INK, MUTED = "#1f1f1f", "#6b6b6b"
 FEATS = P["features"]
 FN = {"P": "Eye closure (%)", "BD": "Blink duration (ms)", "SL": "Saccade latency (ms)", "PV": "Saccade peak velocity (deg/s)",
       "G": "Smooth-pursuit gain", "FD": "Fixation duration (ms)", "D": "Pupil diameter (mm)", "A": "PLR amplitude (%)", "V": "PLR velocity (mm/s)"}
-seq = LinearSegmentedColormap.from_list("seq", ["#f4f8fb", "#9ecae1", "#2b6ca3", "#08306b"])
+seq = LinearSegmentedColormap.from_list("navy", ["#ffffff", "#c9d6e3", "#7f9cb8", "#3d5f82", "#14283f"])
 
 
 def save(fig, n):
@@ -36,7 +38,7 @@ MU = {s: np.array(v) for s, v in P["MU_E"].items()}; SD = {s: np.array(v) for s,
 fig, axs = plt.subplots(3, 3, figsize=(7.6, 6.4))
 for k, ax in enumerate(axs.flat):
     for j, s in enumerate(STATES):
-        ax.bar(j, MU[s][k], width=0.72, color=COL[s], edgecolor="white")
+        ax.bar(j, MU[s][k], width=0.72, color=COL[s], edgecolor="white", lw=0.4)
         ax.errorbar(j, MU[s][k], yerr=SD[s][k], color=INK, capsize=2.5, lw=0.9)
     ax.set_xticks(range(5)); ax.set_xticklabels(STATES, fontsize=8); ax.set_title(FN[FEATS[k]], fontsize=8.5); ax.tick_params(labelsize=8)
 fig.tight_layout(); save(fig, "f_archetypes.png")
@@ -52,7 +54,7 @@ for s in STATES:
     tt = t - t_on - lat; u = np.clip(tt / tc, 0, 1)
     y = d0 - amp * (3 * u ** 2 - 2 * u ** 3)
     rec = np.where(tt > tc + 0.15, amp * (1 - np.exp(-(tt - tc - 0.15) / 1.0)), 0)
-    axs[0].plot(t, y + rec, color=COL[s], lw=2, label=LAB[s], ls="--" if s == "OP" else "-")
+    axs[0].plot(t, y + rec, color=LC[s], lw=1.6, label=LAB[s], ls=LS[s])
 axs[0].axvline(t_on, color=MUTED, lw=0.8, ls=":"); axs[0].set_xlabel("Time (s)"); axs[0].set_ylabel("Pupil diameter (mm)"); axs[0].set_title("(a) Pupillary light reflex")
 tm = np.linspace(0, 400, 4000); dt = (tm[1] - tm[0]) / 1000; AMP = {}
 xs = np.linspace(0, 1, 4001); g0 = xs ** 1.5 * (1 - xs) ** 2.2; gmax = g0.max(); gs = g0 / gmax; gint = np.trapezoid(gs, xs)
@@ -61,7 +63,7 @@ for s in STATES:
     x = (tm - sl) / (1000 * T)
     v = np.where((x > 0) & (x < 1), np.clip(x, 0, 1) ** 1.5 * (1 - np.clip(x, 0, 1)) ** 2.2, 0) / gmax * vp
     AMP[s] = (np.trapezoid(v, tm) / 1000, v.max())
-    axs[1].plot(tm, v, color=COL[s], lw=2, ls="--" if s == "OP" else "-")
+    axs[1].plot(tm, v, color=LC[s], lw=1.6, ls=LS[s])
 axs[1].set_xlabel("Time from target onset (ms)"); axs[1].set_ylabel("Eye angular velocity (deg/s)"); axs[1].set_title("(b) Saccadic velocity profile (15°)")
 h, l = axs[0].get_legend_handles_labels(); fig.legend(h, l, ncol=5, frameon=False, fontsize=8, loc="lower center", bbox_to_anchor=(0.5, -0.06))
 fig.tight_layout(rect=(0, 0.06, 1, 1)); save(fig, "f_dynamics.png")
@@ -73,7 +75,7 @@ def bateman(t, ka, ke):
 traj = {"DR": 1 / (1 + np.exp(-(tt - 60) / 12)), "AC": bateman(tt, 3.0, 0.3), "OP": 1 - np.exp(-tt / 10), "CB": bateman(tt, 2.0, 0.8)}
 fig, ax = plt.subplots(figsize=(5.6, 2.9))
 for s, y in traj.items():
-    ax.plot(tt, y, color=COL[s], lw=2, label=LAB[s], ls="--" if s == "OP" else "-")
+    ax.plot(tt, y, color=LC[s], lw=1.6, label=LAB[s], ls=LS[s])
 ax.set_xlabel("Time since onset of exposure / drive (min)"); ax.set_ylabel(r"Severity template $\lambda_s(\tau)$"); ax.set_ylim(0, 1.08)
 ax.legend(frameon=False, fontsize=8, loc="upper center", ncol=4, bbox_to_anchor=(0.5, -0.2))
 save(fig, "f_trajectory.png")

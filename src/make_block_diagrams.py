@@ -18,9 +18,9 @@ os.makedirs(SRC, exist_ok=True)
 P = json.load(open(os.path.join(RD, "params.json"), encoding="utf-8"))
 EV = {s: json.load(open(os.path.join(BASE, "evidence", f"{s}.json"), encoding="utf-8")) for s in ("drowsiness", "alcohol", "opioid", "cannabis")}
 FONT = "Times New Roman"
-INK, MUTED, EDGE = "1F1F1F", "555555", "3B5B7A"
-FILL = {"in": "EEF3F8", "key": "FFF4DC", "out": "E9F3EA", "ex": "F7F7F7", "stage": "DFE7EF"}
-EDGES = {"in": "3B5B7A", "key": "A07818", "out": "3D7A44", "ex": "8A8A8A", "stage": None}
+INK, MUTED, EDGE = "1F1F1F", "555555", "333333"
+FILL = {"in": "FFFFFF", "key": "EDEDED", "out": "FFFFFF", "ex": "FFFFFF", "stage": "E6E6E6"}
+EDGES = {"in": "333333", "key": "333333", "out": "333333", "ex": "8A8A8A", "stage": None}
 
 
 def rgb(h):
@@ -45,7 +45,7 @@ def runs(par, text, size, bold=False, color=INK):
             pos = m.end()
 
 
-def box(sl, x, y, w, h, lines, kind="in", size=9.0, round_=True):
+def box(sl, x, y, w, h, lines, kind="in", size=9.0, round_=False):
     """lines: list of (markup text, bold, size or None)."""
     shp = sl.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE if round_ else MSO_SHAPE.RECTANGLE, Inches(x), Inches(y), Inches(w), Inches(h))
     if round_:

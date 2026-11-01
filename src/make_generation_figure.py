@@ -22,8 +22,8 @@ plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 9, "savefig.dpi"
 FEATS = ["P", "BD", "SL", "PV", "G", "FD", "D", "A", "V"]
 LAB = {"P": "$P$", "BD": "$B_d$", "SL": "$L_s$", "PV": "$V_p$", "G": "$G_p$", "FD": "$F_d$", "D": "$D_p$", "A": "$A_c$", "V": "$V_c$"}
 STATES = [("DR", "Drowsy"), ("AC", "Alcohol"), ("OP", "Opioid"), ("CB", "Cannabis (THC)")]
-INK = "#1f2933"; MUTED = "#6b7480"
-CMAP = LinearSegmentedColormap.from_list("div", ["#2b6cb0", "#9cc3e6", "#eceff1", "#f2b880", "#c2571a"])
+INK = "#1f1f1f"; MUTED = "#6b6b6b"
+CMAP = plt.get_cmap("RdBu_r")
 
 
 def glyph(c, s, f):
@@ -50,7 +50,7 @@ def main():
             g, d = glyph(P["states"][s][f], s, f)
             if d is not None:
                 M[i, j] = np.clip(d, -0.5, 0.5)
-            col = "#f4f5f6" if d is None else CMAP((np.clip(d, -0.5, 0.5) + 0.5))
+            col = "#f2f2f2" if d is None else CMAP((np.clip(d, -0.5, 0.5) + 0.5))
             ax.add_patch(plt.Rectangle((j, 3 - i), 0.96, 0.92, fc=col, ec="white", lw=1.5))
             if d is None:
                 txt = g
