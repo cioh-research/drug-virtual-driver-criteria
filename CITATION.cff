@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code or the extracted data, please cite the paper below."
+title: "drug-virtual-driver-criteria"
+type: software
+authors:
+  - family-names: Oh
+    given-names: C.
+    affiliation: "Electronics and Telecommunications Research Institute (ETRI)"
+  - family-names: Kim
+    given-names: W.
+    affiliation: "Electronics and Telecommunications Research Institute (ETRI)"
+repository-code: "https://github.com/cioh-research/drug-virtual-driver-criteria"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Virtual-Driver Generation Criteria and Camera Requirements for Evaluating Drug-Impairment Detection in Driver Monitoring Systems"
+  authors:
+    - family-names: Oh
+      given-names: C.
+    - family-names: Kim
+      given-names: W.
+  journal: "Manuscript submitted for publication"

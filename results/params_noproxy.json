@@ -1,0 +1,1636 @@
+{
+ "features": [
+  "P",
+  "BD",
+  "SL",
+  "PV",
+  "G",
+  "FD",
+  "D",
+  "A",
+  "V"
+ ],
+ "names": {
+  "P": "Eye closure (PERCLOS / %TEC)",
+  "BD": "Blink duration",
+  "SL": "Saccade latency",
+  "PV": "Saccade peak velocity",
+  "G": "Smooth-pursuit gain",
+  "FD": "Fixation duration",
+  "D": "Pupil diameter",
+  "A": "PLR constriction amplitude (relative)",
+  "V": "PLR constriction velocity"
+ },
+ "units": {
+  "P": "%",
+  "BD": "ms",
+  "SL": "ms",
+  "PV": "deg/s",
+  "G": "",
+  "FD": "ms",
+  "D": "mm",
+  "A": "%",
+  "V": "mm/s"
+ },
+ "alert": {
+  "P": {
+   "mean": 1.99,
+   "sd": 1.3228756555322954,
+   "source": "Anderson et al. (2013), %TEC first 16 h awake (SE converted to SD)"
+  },
+  "BD": {
+   "mean": 179.88,
+   "sd": 24.89,
+   "source": "Shiferaw et al. (2018), rested on-road drive"
+  },
+  "SL": {
+   "mean": 177.2,
+   "sd": 18.52,
+   "source": "Bargary et al. (2017), n = 1058"
+  },
+  "PV": {
+   "mean": 352.0,
+   "sd": 50.0,
+   "source": "Hopf et al. (2018), 15-deg saccades, n = 100"
+  },
+  "G": {
+   "mean": 0.795,
+   "sd": 0.138,
+   "source": "Bargary et al. (2017), n = 1058"
+  },
+  "FD": {
+   "mean": 561.38,
+   "sd": 108.02,
+   "source": "Shiferaw et al. (2018), rested on-road drive"
+  },
+  "D": {
+   "mean": 4.03,
+   "sd": 0.9,
+   "source": "Schr\u00f6der et al. (2018), photopic 16 lx, n = 91"
+  },
+  "A": {
+   "mean": 31.18736842105263,
+   "sd": 7.249408232284196,
+   "source": "n-weighted mean and within-study pooled SD of baseline arms of Campobasso 2020, Kongsgaard 2019, McKay 2021, Kleine-Brueggeney 2025, R\u00f3\u017canowski 2015"
+  },
+  "V": {
+   "mean": 4.118947368421053,
+   "sd": 0.8002640409335332,
+   "source": "n-weighted mean and within-study pooled SD of baseline arms of Campobasso 2020, Kongsgaard 2019, McKay 2021, Kleine-Brueggeney 2025, R\u00f3\u017canowski 2015"
+  }
+ },
+ "states": {
+  "DR": {
+   "P": {
+    "quant": [],
+    "dir_only": [],
+    "delta": 2.185929648241206,
+    "k": 1,
+    "n": 28,
+    "lo": null,
+    "hi": null,
+    "absolute": {
+     "study": "Anderson2013",
+     "n": 28,
+     "base": 1.99,
+     "imp": 6.34,
+     "sd_base": 1.3228756555322954,
+     "sd_imp": 5.132757543465305,
+     "how": "means; SD converted from reported SE (SD = SE*sqrt(n))",
+     "note": "Optalert %TEC (time with eyes fully closed) after 30 h awake"
+    },
+    "dir_sign": 0
+   },
+   "BD": {
+    "quant": [
+     {
+      "study": "Shiferaw2018",
+      "n": 9,
+      "delta": 0.1160217923059818,
+      "how": "means",
+      "metric": "blink_duration_ms",
+      "base": 179.88,
+      "imp": 200.75,
+      "units": "ms",
+      "note": "",
+      "title": "Stationary gaze entropy predicts lane departure events in sleep-deprived drivers",
+      "year": 2018
+     },
+     {
+      "study": "Lee2016",
+      "n": 16,
+      "delta": 0.25,
+      "how": "reported % change",
+      "metric": "blink_duration_ms",
+      "base": 100,
+      "imp": 125,
+      "units": "ms (converted from s; reported 0.13 vs 0.18 s)",
+      "note": "abstract 100 vs 125 ms (P < 0.05); Table 2 reports 0.13 vs 0.18 s (n.s.)",
+      "title": "High risk of near-crash driving events following night-shift work",
+      "year": 2016
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.20176784523015343,
+    "k": 2,
+    "n": 25,
+    "lo": 0.1160217923059818,
+    "hi": 0.25,
+    "dir_sign": 0
+   },
+   "SL": {
+    "quant": [
+     {
+      "study": "Meyhofer2017",
+      "n": 18,
+      "delta": 0.08996254206082165,
+      "how": "means",
+      "metric": "saccade_latency_ms",
+      "base": 157.51,
+      "imp": 171.68,
+      "units": "ms (prosaccade latency)",
+      "note": "24 h TSD, control group",
+      "title": "Combining two model systems of psychosis: The effects of schizotypy and sleep deprivation on oculomotor control and psychotomimetic states",
+      "year": 2017
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.08996254206082165,
+    "k": 1,
+    "n": 18,
+    "lo": 0.08996254206082165,
+    "hi": 0.08996254206082165,
+    "dir_sign": 0
+   },
+   "PV": {
+    "quant": [
+     {
+      "study": "Stone2019",
+      "n": 12,
+      "delta": -0.2,
+      "how": "reported % change",
+      "metric": "saccade_peak_velocity_deg_s",
+      "base": 48.9,
+      "imp": null,
+      "units": "deg/s (main-sequence intercept); slope /s",
+      "note": "source: decreased '10 to 30%' after 20-25 h awake; midpoint used",
+      "title": "Distinct pattern of oculomotor impairment associated with acute sleep loss and circadian misalignment",
+      "year": 2019
+     },
+     {
+      "study": "Meyhofer2017",
+      "n": 18,
+      "delta": -0.15109746537758048,
+      "how": "means",
+      "metric": "saccade_peak_velocity_deg_s",
+      "base": 306.16,
+      "imp": 259.9,
+      "units": "deg/s (prosaccade peak velocity)",
+      "note": "24 h TSD, control group",
+      "title": "Combining two model systems of psychosis: The effects of schizotypy and sleep deprivation on oculomotor control and psychotomimetic states",
+      "year": 2017
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.17065847922654828,
+    "k": 2,
+    "n": 30,
+    "lo": -0.2,
+    "hi": -0.15109746537758048,
+    "dir_sign": 0
+   },
+   "G": {
+    "quant": [
+     {
+      "study": "Stone2019",
+      "n": 12,
+      "delta": -0.2,
+      "how": "reported % change",
+      "metric": "smooth_pursuit_gain",
+      "base": 0.76,
+      "imp": null,
+      "units": "ratio (steady-state gain)",
+      "note": "~-20% peak at ~23 h awake",
+      "title": "Distinct pattern of oculomotor impairment associated with acute sleep loss and circadian misalignment",
+      "year": 2019
+     },
+     {
+      "study": "Meyhofer2017",
+      "n": 18,
+      "delta": -0.09392083971134911,
+      "how": "means",
+      "metric": "smooth_pursuit_gain",
+      "base": 91.46,
+      "imp": 82.87,
+      "units": "% (step-ramp early pursuit gain)",
+      "note": "step-ramp gain; sinusoidal gain unchanged",
+      "title": "Combining two model systems of psychosis: The effects of schizotypy and sleep deprivation on oculomotor control and psychotomimetic states",
+      "year": 2017
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.1363525038268095,
+    "k": 2,
+    "n": 30,
+    "lo": -0.2,
+    "hi": -0.09392083971134911,
+    "dir_sign": 0
+   },
+   "FD": {
+    "quant": [
+     {
+      "study": "Shiferaw2018",
+      "n": 9,
+      "delta": -0.09104349994656029,
+      "how": "means",
+      "metric": "fixation_duration_ms",
+      "base": 561.38,
+      "imp": 510.27,
+      "units": "ms",
+      "note": "n.s.",
+      "title": "Stationary gaze entropy predicts lane departure events in sleep-deprived drivers",
+      "year": 2018
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.09104349994656029,
+    "k": 1,
+    "n": 9,
+    "lo": -0.09104349994656029,
+    "hi": -0.09104349994656029,
+    "dir_sign": 0
+   },
+   "D": {
+    "quant": [],
+    "dir_only": [
+     {
+      "study": "Russo2003",
+      "n": 66,
+      "direction": "increase",
+      "metric": "pupil_diameter_mm"
+     },
+     {
+      "study": "Daguet2019",
+      "n": 12,
+      "direction": "decrease",
+      "metric": "pupil_diameter_mm"
+     },
+     {
+      "study": "Morad2000",
+      "n": 12,
+      "direction": "decrease",
+      "metric": "pupil_diameter_mm"
+     },
+     {
+      "study": "VanEgroo2019",
+      "n": 20,
+      "direction": "decrease",
+      "metric": "pupil_diameter_mm"
+     }
+    ],
+    "delta": 0.0,
+    "k": 0,
+    "n": 0,
+    "lo": null,
+    "hi": null,
+    "dir_sign": 0
+   },
+   "A": {
+    "quant": [
+     {
+      "study": "Rozanowski2015",
+      "n": 10,
+      "delta": 0.12680710450227178,
+      "how": "means",
+      "metric": "plr_amplitude_mm_or_pct",
+      "base": 24.21,
+      "imp": 27.28,
+      "units": "relative amplitude (%)",
+      "note": "",
+      "title": "Estimation of operators' fatigue using optical methods for determination of pupil activity",
+      "year": 2015
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.12680710450227178,
+    "k": 1,
+    "n": 10,
+    "lo": 0.12680710450227178,
+    "hi": 0.12680710450227178,
+    "dir_sign": 0
+   },
+   "V": {
+    "quant": [
+     {
+      "study": "Kaifie2021",
+      "n": 50,
+      "delta": 0.018850141376060336,
+      "how": "means",
+      "metric": "plr_constriction_velocity_mm_s",
+      "base": 0.1061,
+      "imp": 0.1081,
+      "units": "device units as reported (\u03d1con; unit not stated)",
+      "note": "device units",
+      "title": "The pupillary light reflex (PLR) as a marker for the ability to work or drive \u2013 a feasibility study",
+      "year": 2021
+     },
+     {
+      "study": "Rozanowski2015",
+      "n": 10,
+      "delta": 0.128140703517588,
+      "how": "means",
+      "metric": "plr_constriction_velocity_mm_s",
+      "base": 3.98,
+      "imp": 4.49,
+      "units": "as reported in Table 2 (unit not confirmed)",
+      "note": "",
+      "title": "Estimation of operators' fatigue using optical methods for determination of pupil activity",
+      "year": 2015
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.03706523506631495,
+    "k": 2,
+    "n": 60,
+    "lo": 0.018850141376060336,
+    "hi": 0.128140703517588,
+    "dir_sign": 0
+   }
+  },
+  "AC": {
+   "P": {
+    "quant": [
+     {
+      "study": "Cori2023",
+      "n": 12,
+      "delta": 0.18090452261306536,
+      "how": "%TEC 0.19 -> 0.55 (baseline vs BAC 0.08%); absolute difference +0.36 points added to the alert reference 1.99%",
+      "metric": "perclos_pct",
+      "base": 0.19,
+      "imp": 0.55,
+      "units": "% time with eyes closed",
+      "note": "Optalert; BAC 0.08%; absolute difference applied",
+      "title": null,
+      "year": 2023
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.18090452261306536,
+    "k": 1,
+    "n": 12,
+    "lo": 0.18090452261306536,
+    "hi": 0.18090452261306536,
+    "dir_sign": 0
+   },
+   "BD": {
+    "quant": [
+     {
+      "study": "Cori2023",
+      "n": 12,
+      "delta": 0.2758620689655173,
+      "how": "0.29 -> 0.37 s (baseline vs BAC 0.08%), model-estimated means",
+      "metric": "blink_duration_ms",
+      "base": 290,
+      "imp": 370,
+      "units": "ms (reported in s)",
+      "note": "Optalert; BAC 0.08%",
+      "title": null,
+      "year": 2023
+     },
+     {
+      "study": "Zemblys2024",
+      "n": 35,
+      "delta": 0.28755001714873674,
+      "how": "LMM: 87.47 ms + 31.44 ms per 1 permille BrAC (Manual setup); evaluated at 0.8 permille",
+      "metric": "blink_duration_ms",
+      "base": 87.47,
+      "imp": 112.622,
+      "units": "ms",
+      "note": "test-track driving; 5-camera Smart Eye",
+      "title": null,
+      "year": 2024
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.28456586016578705,
+    "k": 2,
+    "n": 47,
+    "lo": 0.2758620689655173,
+    "hi": 0.28755001714873674,
+    "dir_sign": 0
+   },
+   "SL": {
+    "quant": [
+     {
+      "study": "Vorstius2008",
+      "n": 24,
+      "delta": 0.1116751269035533,
+      "how": "means",
+      "metric": "saccade_latency_ms",
+      "base": 197,
+      "imp": 219,
+      "units": "ms (pro-saccade, correct trials)",
+      "note": "pro-saccades, BrAC ~0.07%",
+      "title": "Specific visuomotor deficits due to alcohol intoxication: Evidence from the pro- and antisaccade paradigms",
+      "year": 2008
+     },
+     {
+      "study": "Ojanpera2023",
+      "n": 9,
+      "delta": 0.15995329830706348,
+      "how": "means",
+      "metric": "saccade_latency_ms",
+      "base": 171.3,
+      "imp": 198.7,
+      "units": "ms (pro-saccade, right eye rightward)",
+      "note": "BrAC 1.0-1.2 per mille",
+      "title": "Ethanol-Induced Vestibular Dysfunction as a Model for Bilateral Vestibular Syndrome: Similarities in Video Head Impulse Test and Video-Oculography Data",
+      "year": 2023
+     },
+     {
+      "study": "Zoethout2009",
+      "n": 12,
+      "delta": 0.03167420814479638,
+      "how": "means",
+      "metric": "saccade_latency_ms",
+      "base": 221,
+      "imp": 228,
+      "units": "ms (LS mean; reported as 0.221 vs 0.228 s)",
+      "note": "IV clamp 0.6 g/L; n.s.",
+      "title": "Central nervous system effects of alcohol at a pseudo-steady-state concentration using alcohol clamping in healthy volunteers",
+      "year": 2009
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.09999718284858683,
+    "k": 3,
+    "n": 45,
+    "lo": 0.03167420814479638,
+    "hi": 0.15995329830706348,
+    "dir_sign": 0
+   },
+   "PV": {
+    "quant": [
+     {
+      "study": "Zoethout2009",
+      "n": 12,
+      "delta": -0.04830917874396135,
+      "how": "means",
+      "metric": "saccade_peak_velocity_deg_s",
+      "base": 455.4,
+      "imp": 433.4,
+      "units": "deg/s (LS mean)",
+      "note": "IV clamp 0.6 g/L; n.s.",
+      "title": "Central nervous system effects of alcohol at a pseudo-steady-state concentration using alcohol clamping in healthy volunteers",
+      "year": 2009
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.04830917874396135,
+    "k": 1,
+    "n": 12,
+    "lo": -0.04830917874396135,
+    "hi": -0.04830917874396135,
+    "dir_sign": 0
+   },
+   "G": {
+    "quant": [
+     {
+      "study": "Didier2025",
+      "n": 62,
+      "delta": -0.11,
+      "how": "reported % change",
+      "metric": "smooth_pursuit_gain",
+      "base": null,
+      "imp": null,
+      "units": "% change from baseline (light drinkers, T1)",
+      "note": "light drinkers (n = 62), BrAC ~0.09%",
+      "title": "The eyes have it: Alcohol-induced eye movement impairment and perceived impairment in older adults with and without alcohol use disorder",
+      "year": 2025
+     },
+     {
+      "study": "Ojanpera2023",
+      "n": 9,
+      "delta": -0.13399280575539574,
+      "how": "means",
+      "metric": "smooth_pursuit_gain",
+      "base": 111.2,
+      "imp": 96.3,
+      "units": "% gain (right eye, rightward cycle)",
+      "note": "BrAC 1.0-1.2 per mille",
+      "title": "Ethanol-Induced Vestibular Dysfunction as a Model for Bilateral Vestibular Syndrome: Similarities in Video Head Impulse Test and Video-Oculography Data",
+      "year": 2023
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.11304134157462763,
+    "k": 2,
+    "n": 71,
+    "lo": -0.13399280575539574,
+    "hi": -0.11,
+    "dir_sign": 0
+   },
+   "FD": {
+    "quant": [
+     {
+      "study": "Silva2017",
+      "n": 20,
+      "delta": 0.10588235294117657,
+      "how": "means",
+      "metric": "fixation_duration_ms",
+      "base": 246.5,
+      "imp": 272.6,
+      "units": "ms (mean fixation duration)",
+      "note": "",
+      "title": "Effects of acute alcohol ingestion on eye movements and cognition: A double-blind, placebo-controlled study",
+      "year": 2017
+     },
+     {
+      "study": "Zemblys2024",
+      "n": 35,
+      "delta": 0.5498395985851774,
+      "how": "LMM: 486.28 ms + 334.22 ms per 1 permille BrAC (Manual setup); evaluated at 0.8 permille",
+      "metric": "fixation_duration_ms",
+      "base": 486.28,
+      "imp": 753.656,
+      "units": "ms",
+      "note": "test-track driving; merged fixations (< 400 ms, < 2 deg)",
+      "title": null,
+      "year": 2024
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.38840060016917716,
+    "k": 2,
+    "n": 55,
+    "lo": 0.10588235294117657,
+    "hi": 0.5498395985851774,
+    "dir_sign": 0
+   },
+   "D": {
+    "quant": [
+     {
+      "study": "Didier2025",
+      "n": 117,
+      "delta": 0.08195211786372013,
+      "how": "reported % change",
+      "metric": "pupil_diameter_mm",
+      "base": null,
+      "imp": null,
+      "units": "% change from baseline (alcohol session, T1)",
+      "note": "ratio of normalised means: alcohol +17.5% vs placebo +8.6% (1.175/1.086 - 1)",
+      "title": "The eyes have it: Alcohol-induced eye movement impairment and perceived impairment in older adults with and without alcohol use disorder",
+      "year": 2025
+     },
+     {
+      "study": "Silva2017",
+      "n": 20,
+      "delta": 0.009554140127388472,
+      "how": "means",
+      "metric": "pupil_diameter_mm",
+      "base": 3.14,
+      "imp": 3.17,
+      "units": "mm (right eye)",
+      "note": "n.s.",
+      "title": "Effects of acute alcohol ingestion on eye movements and cognition: A double-blind, placebo-controlled study",
+      "year": 2017
+     },
+     {
+      "study": "LobatoRincon2013",
+      "n": 19,
+      "delta": 0.06122448979591842,
+      "how": "means",
+      "metric": "pupil_diameter_mm",
+      "base": 5.88,
+      "imp": 6.24,
+      "units": "mm (basal pupil diameter)",
+      "note": "BrAC 0.49 mg/L",
+      "title": "Utilidad de la pupilometr\u00eda din\u00e1mica en el control de alcoholemia de los conductores [Utility of dynamic pupillometry in alcohol testing on drivers]",
+      "year": 2013
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.07014580704311203,
+    "k": 3,
+    "n": 156,
+    "lo": 0.009554140127388472,
+    "hi": 0.08195211786372013,
+    "dir_sign": 0
+   },
+   "A": {
+    "quant": [
+     {
+      "study": "LobatoRincon2013",
+      "n": 19,
+      "delta": -0.017594108019639898,
+      "how": "white-light constriction amplitude 1.88 -> 1.96 mm divided by basal diameter 5.88 -> 6.24 mm (relative amplitude)",
+      "metric": "plr_amplitude_mm_or_pct",
+      "base": 1.88,
+      "imp": 1.96,
+      "units": null,
+      "note": "white light (5600 K); n.s. (p = 0.39); red light alone gives -16.9%",
+      "title": null,
+      "year": 2013
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.017594108019639898,
+    "k": 1,
+    "n": 19,
+    "lo": -0.017594108019639898,
+    "hi": -0.017594108019639898,
+    "dir_sign": 0
+   },
+   "V": {
+    "quant": [
+     {
+      "study": "Kaifie2021",
+      "n": 50,
+      "delta": 0.028275212064090505,
+      "how": "means",
+      "metric": "plr_constriction_velocity_mm_s",
+      "base": 0.1061,
+      "imp": 0.1091,
+      "units": "pix/ms (not mm/s)",
+      "note": "n.s.; device units",
+      "title": "The pupillary light reflex (PLR) as a marker for the ability to work or drive \u2013 a feasibility study",
+      "year": 2021
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.028275212064090508,
+    "k": 1,
+    "n": 50,
+    "lo": 0.028275212064090505,
+    "hi": 0.028275212064090505,
+    "dir_sign": 0
+   }
+  },
+  "OP": {
+   "P": {
+    "quant": [],
+    "dir_only": [],
+    "delta": 0.0,
+    "k": 0,
+    "n": 0,
+    "lo": null,
+    "hi": null,
+    "dir_sign": 0
+   },
+   "BD": {
+    "quant": [],
+    "dir_only": [],
+    "delta": 0.0,
+    "k": 0,
+    "n": 0,
+    "lo": null,
+    "hi": null,
+    "dir_sign": 0
+   },
+   "SL": {
+    "quant": [],
+    "dir_only": [],
+    "delta": 0.0,
+    "k": 0,
+    "n": 0,
+    "lo": null,
+    "hi": null,
+    "dir_sign": 0
+   },
+   "PV": {
+    "quant": [
+     {
+      "study": "Feit2014",
+      "n": 46,
+      "delta": -0.03512936150011871,
+      "how": "means",
+      "metric": "saccade_peak_velocity_deg_s",
+      "base": 421.3,
+      "imp": 406.5,
+      "units": "deg/s, prosaccade (latency task) peak velocity in HIV-negative methadone patients; baseline = before the methadone dose, impaired = about 1.5 h after it. Drug-free control group mean was 447.5 +/- 54 deg/s",
+      "note": "methadone maintenance (HIV-negative subgroup), pre- vs post-dose (tolerant)",
+      "title": "Oculomotor disturbances in HIV-positive individuals treated with methadone",
+      "year": 2014
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.03512936150011871,
+    "k": 1,
+    "n": 46,
+    "lo": -0.03512936150011871,
+    "hi": -0.03512936150011871,
+    "dir_sign": 0
+   },
+   "G": {
+    "quant": [],
+    "dir_only": [],
+    "delta": 0.0,
+    "k": 0,
+    "n": 0,
+    "lo": null,
+    "hi": null,
+    "dir_sign": 0
+   },
+   "FD": {
+    "quant": [],
+    "dir_only": [],
+    "delta": 0.0,
+    "k": 0,
+    "n": 0,
+    "lo": null,
+    "hi": null,
+    "dir_sign": 0
+   },
+   "D": {
+    "quant": [
+     {
+      "study": "Knaggs2004",
+      "n": 10,
+      "delta": -0.26,
+      "how": "reported % change",
+      "metric": "pupil_diameter_mm",
+      "base": null,
+      "imp": null,
+      "units": "% change from baseline",
+      "note": "morphine/codeine, analgesic dose",
+      "title": "The pupillary effects of intravenous morphine, codeine, and tramadol in volunteers",
+      "year": 2004
+     },
+     {
+      "study": "Rollins2014",
+      "n": 10,
+      "delta": -0.5535714285714285,
+      "how": "means",
+      "metric": "pupil_diameter_mm",
+      "base": 5.6,
+      "imp": 2.5,
+      "units": "mm (predrug baseline vs maximal desaturation at SpO2 85%)",
+      "note": "high-dose remifentanil",
+      "title": "Pupillary Effects of High-dose Opioid Quantified with Infrared Pupillometry",
+      "year": 2014
+     },
+     {
+      "study": "McKay2021",
+      "n": 18,
+      "delta": -0.5034013605442177,
+      "how": "means",
+      "metric": "pupil_diameter_mm",
+      "base": 4.41,
+      "imp": 2.19,
+      "units": "mm",
+      "note": "",
+      "title": "Detection of opioid effect with pupillometry",
+      "year": 2021
+     },
+     {
+      "study": "Kongsgaard2019",
+      "n": 56,
+      "delta": -0.32667876588021777,
+      "how": "means",
+      "metric": "pupil_diameter_mm",
+      "base": 5.51,
+      "imp": 3.71,
+      "units": "mm (baseline = 20 opioid-free volunteers; impaired = 36 patients whose opioid dose was increased in the last 14 days)",
+      "note": "chronic opioid patients (dose increase, n=36) vs volunteers (n=20)",
+      "title": "Dynamic assessment of the pupillary reflex in patients on high-dose opioids",
+      "year": 2019
+     },
+     {
+      "study": "Meissner2023",
+      "n": 42,
+      "delta": -0.5445,
+      "how": "mean of -67.2% (hydromorphone, 6.4 -> 2.1 mm) and -41.7% (morphine, 7.2 -> 4.2 mm), dark-adapted",
+      "metric": "pupil_diameter_mm",
+      "base": null,
+      "imp": null,
+      "units": null,
+      "note": "IV infusion, paired crossover",
+      "title": null,
+      "year": 2023
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.42911727694707646,
+    "k": 5,
+    "n": 136,
+    "lo": -0.5535714285714285,
+    "hi": -0.26,
+    "dir_sign": 0
+   },
+   "A": {
+    "quant": [
+     {
+      "study": "Rollins2014",
+      "n": 10,
+      "delta": -0.6416,
+      "how": "absolute PLR amplitude divided by the pupil diameter of the same condition (rule ii): 2.5/5.6 mm -> 0.4/2.5 mm; ratio of group means (approximation)",
+      "metric": "plr_amplitude_mm_or_pct",
+      "base": 44.642857142857146,
+      "imp": 16.0,
+      "units": "% (derived)",
+      "note": "high-dose remifentanil; ratio of group means",
+      "title": null,
+      "year": 2014
+     },
+     {
+      "study": "McKay2021",
+      "n": 18,
+      "delta": -0.6706827309236948,
+      "how": "means",
+      "metric": "plr_amplitude_mm_or_pct",
+      "base": 37.35,
+      "imp": 12.3,
+      "units": "% reflex (percent constriction)",
+      "note": "",
+      "title": "Detection of opioid effect with pupillometry",
+      "year": 2021
+     },
+     {
+      "study": "Kongsgaard2019",
+      "n": 56,
+      "delta": -0.23134328358208964,
+      "how": "means",
+      "metric": "plr_amplitude_mm_or_pct",
+      "base": 40.2,
+      "imp": 30.9,
+      "units": "% constriction ('variation'); baseline = opioid-free volunteers, impaired = dose-increase patients",
+      "note": "cross-sectional",
+      "title": "Dynamic assessment of the pupillary reflex in patients on high-dose opioids",
+      "year": 2019
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.3743275361574229,
+    "k": 3,
+    "n": 84,
+    "lo": -0.6706827309236948,
+    "hi": -0.23134328358208964,
+    "dir_sign": 0
+   },
+   "V": {
+    "quant": [
+     {
+      "study": "McKay2021",
+      "n": 18,
+      "delta": -0.6606060606060605,
+      "how": "means",
+      "metric": "plr_constriction_velocity_mm_s",
+      "base": 3.3,
+      "imp": 1.12,
+      "units": "mm/s",
+      "note": "",
+      "title": "Detection of opioid effect with pupillometry",
+      "year": 2021
+     },
+     {
+      "study": "Kongsgaard2019",
+      "n": 54,
+      "delta": -0.41210937500000006,
+      "how": "means",
+      "metric": "plr_constriction_velocity_mm_s",
+      "base": 5.12,
+      "imp": 3.01,
+      "units": "mm/s; baseline = opioid-free volunteers, impaired = dose-increase patients",
+      "note": "cross-sectional; velocity endpoint n = 34 + 20",
+      "title": "Dynamic assessment of the pupillary reflex in patients on high-dose opioids",
+      "year": 2019
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.47423354640151516,
+    "k": 2,
+    "n": 72,
+    "lo": -0.6606060606060605,
+    "hi": -0.41210937500000006,
+    "dir_sign": 0
+   }
+  },
+  "CB": {
+   "P": {
+    "quant": [],
+    "dir_only": [],
+    "delta": 0.0,
+    "k": 0,
+    "n": 0,
+    "lo": null,
+    "hi": null,
+    "dir_sign": 0
+   },
+   "BD": {
+    "quant": [
+     {
+      "study": "Manning2023",
+      "n": 14,
+      "delta": -0.08621625288291941,
+      "how": "means",
+      "metric": "blink_duration_ms",
+      "base": 147.42,
+      "imp": 134.71,
+      "units": "ms (mean over drive)",
+      "note": "CBD 100 mg + THC 5 mg sublingual",
+      "title": "Effect of CannEpil\u00ae on simulated driving performance and co-monitoring of ocular activity: A randomised controlled trial",
+      "year": 2023
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.08621625288291941,
+    "k": 1,
+    "n": 14,
+    "lo": -0.08621625288291941,
+    "hi": -0.08621625288291941,
+    "dir_sign": 0
+   },
+   "SL": {
+    "quant": [
+     {
+      "study": "Zuurman2008",
+      "n": 12,
+      "delta": 0.11286681715575622,
+      "how": "THC-placebo difference +20 ms (95% CI 10-30) relative to normative latency 177.2 ms",
+      "metric": "saccade_latency_ms",
+      "base": null,
+      "imp": null,
+      "units": "ms",
+      "note": "vaporised THC",
+      "title": null,
+      "year": 2008
+     },
+     {
+      "study": "Kleinloog2012",
+      "n": 49,
+      "delta": 0.035,
+      "how": "means",
+      "metric": "saccade_latency_ms",
+      "base": 200,
+      "imp": 207,
+      "units": "ms (saccadic reaction time)",
+      "note": "vaporised THC; n.s.",
+      "title": "Does olanzapine inhibit the psychomimetic effects of \u03949-tetrahydrocannabinol?",
+      "year": 2012
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.050318062391296305,
+    "k": 2,
+    "n": 61,
+    "lo": 0.035,
+    "hi": 0.11286681715575622,
+    "dir_sign": 0
+   },
+   "PV": {
+    "quant": [
+     {
+      "study": "Zuurman2008",
+      "n": 12,
+      "delta": 0.03977272727272727,
+      "how": "THC-placebo difference +14 deg/s (95% CI -4 to 32) relative to normative peak velocity 352 deg/s; nonsignificant point estimate retained",
+      "metric": "saccade_peak_velocity_deg_s",
+      "base": null,
+      "imp": null,
+      "units": "deg/s",
+      "note": "n.s.",
+      "title": null,
+      "year": 2008
+     },
+     {
+      "study": "Kleinloog2012",
+      "n": 49,
+      "delta": 0.0020833333333333333,
+      "how": "means",
+      "metric": "saccade_peak_velocity_deg_s",
+      "base": 480,
+      "imp": 481,
+      "units": "deg/s",
+      "note": "vaporised THC; n.s.",
+      "title": "Does olanzapine inhibit the psychomimetic effects of \u03949-tetrahydrocannabinol?",
+      "year": 2012
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.009497640337804272,
+    "k": 2,
+    "n": 61,
+    "lo": 0.0020833333333333333,
+    "hi": 0.03977272727272727,
+    "dir_sign": 0
+   },
+   "G": {
+    "quant": [],
+    "dir_only": [],
+    "delta": 0.0,
+    "k": 0,
+    "n": 0,
+    "lo": null,
+    "hi": null,
+    "dir_sign": 0
+   },
+   "FD": {
+    "quant": [
+     {
+      "study": "Manning2023",
+      "n": 14,
+      "delta": 0.10044885194367477,
+      "how": "means",
+      "metric": "fixation_duration_ms",
+      "base": 617.13,
+      "imp": 679.12,
+      "units": "ms (mean over 40-min drive)",
+      "note": "simulated drive",
+      "title": "Effect of CannEpil\u00ae on simulated driving performance and co-monitoring of ocular activity: A randomised controlled trial",
+      "year": 2023
+     }
+    ],
+    "dir_only": [],
+    "delta": 0.10044885194367477,
+    "k": 1,
+    "n": 14,
+    "lo": 0.10044885194367477,
+    "hi": 0.10044885194367477,
+    "dir_sign": 0
+   },
+   "D": {
+    "quant": [
+     {
+      "study": "KleineBrueggeney2025",
+      "n": 10,
+      "delta": -0.07224958949096873,
+      "how": "means",
+      "metric": "pupil_diameter_mm",
+      "base": 6.09,
+      "imp": 5.65,
+      "units": "mm",
+      "note": "IV THC; THC arm, 20-min endpoint n = 10",
+      "title": "Effects of intravenous d9-THC on pupillary reaction and pupil size: a prospective, placebo-controlled trial in healthy volunteers not regularly consuming cannabis",
+      "year": 2025
+     },
+     {
+      "study": "OrtizPeregrina2020",
+      "n": 20,
+      "delta": 0.003384094754653058,
+      "how": "means",
+      "metric": "pupil_diameter_mm",
+      "base": 5.91,
+      "imp": 5.93,
+      "units": "mm, low mesopic 0.3 lux (mean (SE): 0.19 / 0.16)",
+      "note": "low mesopic; n.s.",
+      "title": "Effects of Smoking Cannabis on Visual Function and Driving Performance. A Driving-Simulator Based Study",
+      "year": 2020
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.021827133327220867,
+    "k": 2,
+    "n": 30,
+    "lo": -0.07224958949096873,
+    "hi": 0.003384094754653058,
+    "dir_sign": 0
+   },
+   "A": {
+    "quant": [
+     {
+      "study": "KleineBrueggeney2025",
+      "n": 10,
+      "delta": -0.3617021276595745,
+      "how": "means",
+      "metric": "plr_amplitude_mm_or_pct",
+      "base": 23.5,
+      "imp": 15.0,
+      "units": "% (relative amplitude)",
+      "note": "THC arm, 20-min endpoint n = 10",
+      "title": "Effects of intravenous d9-THC on pupillary reaction and pupil size: a prospective, placebo-controlled trial in healthy volunteers not regularly consuming cannabis",
+      "year": 2025
+     },
+     {
+      "study": "Campobasso2020",
+      "n": 14,
+      "delta": -0.18169991326973106,
+      "how": "means",
+      "metric": "plr_amplitude_mm_or_pct",
+      "base": 23.06,
+      "imp": 18.87,
+      "units": "% (relative amplitude)",
+      "note": "",
+      "title": "Pupillary effects in habitual cannabis consumers quantified with pupillography",
+      "year": 2020
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.2567008359321658,
+    "k": 2,
+    "n": 24,
+    "lo": -0.3617021276595745,
+    "hi": -0.18169991326973106,
+    "dir_sign": 0
+   },
+   "V": {
+    "quant": [
+     {
+      "study": "KleineBrueggeney2025",
+      "n": 8,
+      "delta": -0.23750000000000004,
+      "how": "means",
+      "metric": "plr_constriction_velocity_mm_s",
+      "base": 4.0,
+      "imp": 3.05,
+      "units": "mm/s",
+      "note": "n.s.; THC arm, 20-min endpoint n = 8; 40-80% constriction-interval slope",
+      "title": "Effects of intravenous d9-THC on pupillary reaction and pupil size: a prospective, placebo-controlled trial in healthy volunteers not regularly consuming cannabis",
+      "year": 2025
+     },
+     {
+      "study": "Campobasso2020",
+      "n": 14,
+      "delta": -0.042929292929292914,
+      "how": "means",
+      "metric": "plr_constriction_velocity_mm_s",
+      "base": 3.96,
+      "imp": 3.79,
+      "units": "mm/s",
+      "note": "",
+      "title": "Pupillary effects in habitual cannabis consumers quantified with pupillography",
+      "year": 2020
+     }
+    ],
+    "dir_only": [],
+    "delta": -0.11368227731864096,
+    "k": 2,
+    "n": 22,
+    "lo": -0.23750000000000004,
+    "hi": -0.042929292929292914,
+    "dir_sign": 0
+   }
+  }
+ },
+ "evidence_set": "core",
+ "supporting_not_counted": {
+  "DR": {
+   "SL": [
+    "Collet2020"
+   ],
+   "PV": [
+    "Zils2005",
+    "Fransson2008SD",
+    "Russo2003",
+    "Hirvonen2010"
+   ],
+   "G": [
+    "Fransson2008SD"
+   ],
+   "FD": [],
+   "P": [
+    "Jackson2016TIP",
+    "Cellini2023"
+   ],
+   "BD": [
+    "Ingre2006",
+    "Schleicher2008",
+    "Anund2009"
+   ]
+  },
+  "AC": {
+   "P": [
+    "Cori2023"
+   ],
+   "SL": [
+    "Didier2025",
+    "Roche2014",
+    "Fransson2010",
+    "Dumont2010"
+   ],
+   "PV": [
+    "Didier2025",
+    "Fransson2010",
+    "Dumont2010"
+   ],
+   "G": [
+    "Roche2014",
+    "Fransson2010",
+    "Dumont2010"
+   ],
+   "FD": [
+    "Koch2023",
+    "Deuber2025"
+   ]
+  },
+  "OP": {
+   "PV": []
+  },
+  "CB": {
+   "SL": [
+    "Ploner2002"
+   ],
+   "G": [
+    "LiemMoolenaar2010"
+   ],
+   "A": [
+    "Godbole2024"
+   ]
+  }
+ },
+ "excluded_by_appraisal": {
+  "Lehtinen1979": "published before 2000",
+  "Ziedman1980": "published before 2000 (technical report)",
+  "Beideman1977": "published before 2000",
+  "Wegner1999": "published before 2000",
+  "Palmer1994": "published before 2000 (technical report)",
+  "Dinges1998": "published before 2000 (technical report)",
+  "Watling2013": "conference paper, not peer reviewed",
+  "Muehl2018": "conference abstract",
+  "Winkler2017": "conference abstract",
+  "Zoethout2012ch5": "thesis chapter (same programme as Zoethout et al., 2009)",
+  "Caldwell2003AFRL": "technical report, not peer reviewed",
+  "Feit2013": "conference abstract (same programme as Feit et al., 2014)",
+  "FeitEPA1229_2014": "conference abstract (same programme as Feit et al., 2014)",
+  "Walecki2016": "conference abstract (same programme as Feit et al., 2014)",
+  "Rottach2002": "n < 8",
+  "DiStasi2014": "sample size not verifiable on the opened record",
+  "PorathWaller2021": "examiner ratings, not instrumented (technical report)",
+  "Porath2019": "examiner ratings, not instrumented",
+  "Tyson2023": "re-analysis of Stone et al. (2019) data",
+  "Jackson2016AAP": "same group, protocol and year as Jackson et al. (2016, TIP); overlap not excludable",
+  "ShekariSoleimanloo2019": "same laboratory on-road sleep-deprivation protocol as Shiferaw et al. (2018); overlap not excludable",
+  "McKay2022": "same laboratory and remifentanil protocol as McKay & Larson (2021); overlap not excludable",
+  "McKay2026": "same laboratory and remifentanil protocol as McKay & Larson (2021); overlap not excludable",
+  "Tyson2021": "reported values not verifiable against the published article",
+  "Marcotte2023": "examiner ratings, not instrumented (officer-estimated pupil size during field sobriety testing, 0.5-mm steps)"
+ },
+ "contributing_ids": [
+  "Anderson2013",
+  "Campobasso2020",
+  "Cori2023",
+  "Daguet2019",
+  "Didier2025",
+  "Feit2014",
+  "Kaifie2021",
+  "KleineBrueggeney2025",
+  "Kleinloog2012",
+  "Knaggs2004",
+  "Kongsgaard2019",
+  "Lee2016",
+  "LobatoRincon2013",
+  "Manning2023",
+  "McKay2021",
+  "Meissner2023",
+  "Meyhofer2017",
+  "Morad2000",
+  "NORM_Bargary2017",
+  "NORM_Hopf2018",
+  "NORM_Schroder2018",
+  "Ojanpera2023",
+  "OrtizPeregrina2020",
+  "Rollins2014",
+  "Rozanowski2015",
+  "Russo2003",
+  "Shiferaw2018",
+  "Silva2017",
+  "Stone2019",
+  "VanEgroo2019",
+  "Vorstius2008",
+  "Zemblys2024",
+  "Zoethout2009",
+  "Zuurman2008"
+ ],
+ "W_scale": 0.3285815034135521,
+ "MU_E": {
+  "AL": [
+   1.99,
+   179.88,
+   177.2,
+   352.0,
+   0.795,
+   561.38,
+   4.03,
+   31.18736842105263,
+   4.118947368421053
+  ],
+  "DR": [
+   6.34,
+   216.174,
+   193.14136245317758,
+   291.928215312255,
+   0.6865997594576865,
+   510.27,
+   4.03,
+   35.1421483075719,
+   4.271617120857359
+  ],
+  "AC": [
+   2.35,
+   231.06770692662175,
+   194.91950080076958,
+   334.9951690821256,
+   0.705132133448171,
+   779.4203289229727,
+   4.3126876023837415,
+   30.63865449220432,
+   4.235411478743986
+  ],
+  "OP": [
+   1.99,
+   179.88,
+   177.2,
+   339.6344647519582,
+   0.795,
+   561.38,
+   2.300657373903282,
+   19.51307764076618,
+   2.165604350453549
+  ],
+  "CB": [
+   1.99,
+   164.37142043142043,
+   186.11636065573768,
+   355.3431693989071,
+   0.795,
+   617.7699765041401,
+   3.9420366526913,
+   23.181544876843986,
+   3.650696051423324
+  ]
+ },
+ "SD_E": {
+  "AL": [
+   1.3228756555322954,
+   24.89,
+   18.52,
+   50.0,
+   0.138,
+   108.02,
+   0.9,
+   7.249408232284196,
+   0.8002640409335332
+  ],
+  "DR": [
+   5.132757543465305,
+   29.91200166777852,
+   20.186106278966417,
+   41.46707603867259,
+   0.1191833544719003,
+   98.18548113577256,
+   0.9,
+   8.168684699575088,
+   0.8299260157258538
+  ],
+  "AC": [
+   1.5621898444728113,
+   31.97284425952644,
+   20.37194782635583,
+   47.58454106280194,
+   0.12240029486270139,
+   149.9750328302745,
+   0.9631312263388009,
+   7.121861360766921,
+   0.8228916763981949
+  ],
+  "OP": [
+   1.3228756555322954,
+   24.89,
+   18.52,
+   48.24353192499407,
+   0.138,
+   108.02,
+   0.5137944507476312,
+   4.5357551100939135,
+   0.4207519867440165
+  ],
+  "CB": [
+   1.3228756555322954,
+   22.744077465744134,
+   19.451890515486806,
+   50.47488201689022,
+   0.138,
+   118.87048498695574,
+   0.8803555800055013,
+   5.388479079043318,
+   0.709288202303991
+  ]
+ },
+ "MU_D": {
+  "AL": [
+   1.99,
+   179.88,
+   177.2,
+   352.0,
+   0.795,
+   561.38,
+   4.03,
+   31.18736842105263,
+   4.118947368421053
+  ],
+  "DR": [
+   6.34,
+   216.174,
+   193.14136245317758,
+   291.928215312255,
+   0.6865997594576865,
+   510.27,
+   4.03,
+   35.1421483075719,
+   4.271617120857359
+  ],
+  "AC": [
+   2.35,
+   231.06770692662175,
+   194.91950080076958,
+   334.9951690821256,
+   0.705132133448171,
+   779.4203289229727,
+   4.3126876023837415,
+   30.63865449220432,
+   4.235411478743986
+  ],
+  "OP": [
+   1.99,
+   179.88,
+   177.2,
+   339.6344647519582,
+   0.795,
+   561.38,
+   2.300657373903282,
+   19.51307764076618,
+   2.165604350453549
+  ],
+  "CB": [
+   1.99,
+   164.37142043142043,
+   186.11636065573768,
+   355.3431693989071,
+   0.795,
+   617.7699765041401,
+   3.9420366526913,
+   23.181544876843986,
+   3.650696051423324
+  ]
+ },
+ "SD_D": {
+  "AL": [
+   1.3228756555322954,
+   24.89,
+   18.52,
+   50.0,
+   0.138,
+   108.02,
+   0.9,
+   7.249408232284196,
+   0.8002640409335332
+  ],
+  "DR": [
+   5.132757543465305,
+   29.91200166777852,
+   20.186106278966417,
+   41.46707603867259,
+   0.1191833544719003,
+   98.18548113577256,
+   0.9,
+   8.168684699575088,
+   0.8299260157258538
+  ],
+  "AC": [
+   1.5621898444728113,
+   31.97284425952644,
+   20.37194782635583,
+   47.58454106280194,
+   0.12240029486270139,
+   149.9750328302745,
+   0.9631312263388009,
+   7.121861360766921,
+   0.8228916763981949
+  ],
+  "OP": [
+   1.3228756555322954,
+   24.89,
+   18.52,
+   48.24353192499407,
+   0.138,
+   108.02,
+   0.5137944507476312,
+   4.5357551100939135,
+   0.4207519867440165
+  ],
+  "CB": [
+   1.3228756555322954,
+   22.744077465744134,
+   19.451890515486806,
+   50.47488201689022,
+   0.138,
+   118.87048498695574,
+   0.8803555800055013,
+   5.388479079043318,
+   0.709288202303991
+  ]
+ },
+ "MU_W": {
+  "AL": [
+   1.99,
+   179.88,
+   177.2,
+   352.0,
+   0.795,
+   561.38,
+   4.03,
+   31.18736842105263,
+   4.118947368421053
+  ],
+  "DR": [
+   6.34,
+   216.174,
+   193.14136245317758,
+   291.928215312255,
+   0.6865997594576865,
+   510.27,
+   4.03,
+   35.1421483075719,
+   4.271617120857359
+  ],
+  "AC": [
+   2.35,
+   231.06770692662175,
+   194.91950080076958,
+   334.9951690821256,
+   0.705132133448171,
+   779.4203289229727,
+   4.3126876023837415,
+   30.63865449220432,
+   4.235411478743986
+  ],
+  "OP": [
+   1.99,
+   179.88,
+   177.2,
+   339.6344647519582,
+   0.795,
+   561.38,
+   3.46177,
+   27.351412405179136,
+   3.4771149828949257
+  ],
+  "CB": [
+   1.99,
+   164.37142043142043,
+   186.11636065573768,
+   355.3431693989071,
+   0.795,
+   617.7699765041401,
+   3.9420366526913,
+   23.181544876843986,
+   3.650696051423324
+  ]
+ },
+ "SD_W": {
+  "AL": [
+   1.3228756555322954,
+   24.89,
+   18.52,
+   50.0,
+   0.138,
+   108.02,
+   0.9,
+   7.249408232284196,
+   0.8002640409335332
+  ],
+  "DR": [
+   5.132757543465305,
+   29.91200166777852,
+   20.186106278966417,
+   41.46707603867259,
+   0.1191833544719003,
+   98.18548113577256,
+   0.9,
+   8.168684699575088,
+   0.8299260157258538
+  ],
+  "AC": [
+   1.5621898444728113,
+   31.97284425952644,
+   20.37194782635583,
+   47.58454106280194,
+   0.12240029486270139,
+   149.9750328302745,
+   0.9631312263388009,
+   7.121861360766921,
+   0.8228916763981949
+  ],
+  "OP": [
+   1.3228756555322954,
+   24.89,
+   18.52,
+   48.24353192499407,
+   0.138,
+   108.02,
+   0.7731,
+   6.3577520096520335,
+   0.6755633996043764
+  ],
+  "CB": [
+   1.3228756555322954,
+   22.744077465744134,
+   19.451890515486806,
+   50.47488201689022,
+   0.138,
+   118.87048498695574,
+   0.8803555800055013,
+   5.388479079043318,
+   0.709288202303991
+  ]
+ }
+}
